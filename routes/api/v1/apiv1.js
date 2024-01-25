@@ -21,10 +21,10 @@ router.get('/urls/preview', async (req, res, next) => {
         let metaTags = htmlPage.querySelectorAll("meta ");
         //console.log("meta tags: " + metaTags);
 
-        let metaUrl = htmlPage.querySelector("[property~=og:url[content]").content;
-        let metaTitle = htmlPage.querySelector("[property~=og:title[content]").content;
-        let metaImage = htmlPage.querySelector("[property~=og:img").content;
-        let metaDescrip = htmlPage.querySelector("[property~=og:description").content;
+        let metaUrl = htmlPage.head.querySelector("[property~=og:url[content]").content;
+        let metaTitle = htmlPage.head.querySelector("[property~=og:title[content]").content;
+        let metaImage = htmlPage.head.querySelector("[property~=og:img").content;
+        let metaDescrip = htmlPage.head.querySelector("[property~=og:description").content;
 
         console.log(metaUrl + "");
 
