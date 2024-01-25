@@ -1,4 +1,11 @@
-Link that contains author meta tag:
-https://www.cnn.com/politics/live-news/trump-trial-e-jean-carroll-01-25-24/index.html
+# Webpage Preview Server
+## Changes Made
 
-I changed two things from the original html code. I changed the amount of padding of the content from the outer box lines so it is more spaced out and visually appealing. I also added a light background color to differenitate the box from the rest of the page and again, look more visually appealing.
+1. **Added Author Information:**
+   - Extracted and included the author's name from the meta tag.
+   - [Link to a page with author meta tag](https://www.cnn.com/politics/live-news/trump-trial-e-jean-carroll-01-25-24/index.html)
+
+2. **Enhanced Styling of HTML Preview:**
+   - Increased padding around the content within the HTML box for better spacing and visual appeal.
+   - Added a light background color to differentiate the box from the rest of the page.
+   - [Link to deployed site on Render.com](https://websharer-4x6l.onrender.com)
