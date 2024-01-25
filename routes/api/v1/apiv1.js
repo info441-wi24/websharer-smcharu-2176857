@@ -40,8 +40,6 @@ router.get('/urls/preview', async (req, res, next) => {
             meta_descrip = htmlPage.querySelector('meta[name="description"]')?.getAttribute('content');;
         }
 
-        //let metaArray = [meta_title, meta_url, meta_image, meta_descrip];
-
         function metaTitleFunction (meta_title) {
             if (meta_title) {
                 return `<p><strong>${meta_title}</strong></p>`;
