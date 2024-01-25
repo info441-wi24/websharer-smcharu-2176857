@@ -9,3 +9,6 @@
    - Increased padding around the content within the HTML box for better spacing and visual appeal.
    - Added a light background color to differentiate the box from the rest of the page.
    - [Link to deployed site on Render.com](https://websharer-4x6l.onrender.com)
+
+3. **Additional Help:**
+    - I did not get any additional help from other students
