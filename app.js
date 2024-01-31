@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
 import models from './models.js'
-import apiv1Router from './routes/api/v1/apiv1.js'
+//import apiv2Router from './'
 
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -25,6 +25,6 @@ app.use((req, res, next) => {
     next()
 })
 
-app.use('/api/v2', apiv2Router);
+//app.use('/api/v2', apiv2Router);
 
 export default app;
