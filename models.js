@@ -1,11 +1,11 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 let models = {};
 
 console.log("connecting to mongodb");
 
 //TODO: add your mongoDB connection string below, with database names websharer
-await mongoose.connect("mongodb://localhost:27017/websharer");
+await mongoose.connect("mongodb+srv://smcharu:Password123@cluster0saimanasvi.l0aadyj.mongodb.net/websharer");
 
 console.log("successfully connected to mongodb");
 
@@ -15,6 +15,8 @@ const postSchema = new mongoose.Schema({
     created_date: String
 })
 
-models.User = mongoose.model('Post', postSchema);
+models.Post = mongoose.model('Post', postSchema);
+
+console.log("mongoose models created")
 
 export default models;

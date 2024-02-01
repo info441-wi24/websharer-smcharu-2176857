@@ -1,11 +1,10 @@
 import express from 'express';
-
-var router = express.Router();
-
 import getURLPreview from '../utils/urlPreviews.js';
 
-//TODO: Add handlers here
-router.get('/preview', function(req, res, next) {
+const router = express.Router();
+
+// Handler for "api/v2/urls/preview"
+router.get('/preview', async (req, res) => {
     const inputUrl = req.query.url;
 
     try {
