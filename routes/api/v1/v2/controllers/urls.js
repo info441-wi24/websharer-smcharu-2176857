@@ -5,9 +5,9 @@ const router = express.Router();
 
 // Handler for "api/v2/urls/preview"
 router.get('/preview', async (req, res) => {
-    const inputUrl = req.query.url;
 
     try {
+        const inputUrl = req.query.url;
         const previewHTML = await getURLPreview(inputUrl);
 
         res.type("html");

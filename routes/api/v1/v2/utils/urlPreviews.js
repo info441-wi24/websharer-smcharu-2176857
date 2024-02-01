@@ -3,10 +3,9 @@ import fetch from 'node-fetch';
 import parser from 'node-html-parser';
 
 async function getURLPreview(url){
-    let inputUrl = req.query.url;
     
     try {
-        let response = await fetch(inputUrl);
+        let response = await fetch(url);
         let pageText = await response.text();
         
         let htmlPage = parser.parse(pageText);
@@ -21,13 +20,13 @@ async function getURLPreview(url){
 
 
         if (meta_url == null) {
-            meta_url = inputUrl;
+            meta_url = url;
         }
 
         if (meta_title == null) {
             meta_title = htmlPage.querySelector('title')?.text;
             if (meta_title == null) {
-                meta_title = inputUrl;
+                meta_title = url;
             }
         }
 
@@ -82,15 +81,12 @@ async function getURLPreview(url){
             <body>
             </html>
         `
-
-        res.type("html");
-        res.send(html1);
+        return(html1);
 
         console.log(html1);
 
     } catch (error) {
         console.log(error);
-        res.status(500).send("Error: " + error)
     }
 }
 

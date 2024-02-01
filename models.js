@@ -10,6 +10,7 @@ await mongoose.connect("mongodb+srv://smcharu:Password123@cluster0saimanasvi.l0a
 console.log("successfully connected to mongodb");
 
 const postSchema = new mongoose.Schema({
+    user: String,
     url: String,
     description: String,
     created_date: String
