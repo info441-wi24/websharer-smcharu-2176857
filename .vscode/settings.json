@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/f2042146-1915-4972-b863-58fad1e6c8ae/resourceGroups/my-ResourceGroup/providers/Microsoft.Web/sites/websharer-smcharu",
+    "appService.deploySubpath": "."
+}
