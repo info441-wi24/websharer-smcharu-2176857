@@ -1,8 +1,16 @@
 import fetch from 'node-fetch';
-
 import parser from 'node-html-parser';
 
 async function getURLPreview(url){
+
+    const escapeHTML = str => String(str).replace(/[&<>'"]/g, 
+  tag => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      "'": '&#39;',
+      '"': '&quot;'
+    }[tag]));
     
     try {
         let response = await fetch(url);
@@ -10,13 +18,13 @@ async function getURLPreview(url){
         
         let htmlPage = parser.parse(pageText);
 
-        let meta_title = htmlPage.querySelector('meta[property="og:title"]')?.getAttribute('content');
-        let meta_url = htmlPage.querySelector('meta[property="og:url"]')?.getAttribute('content');
-        let meta_image = htmlPage.querySelector('meta[property="og:image"]')?.getAttribute('content');
-        let meta_descrip = htmlPage.querySelector('meta[property="og:description"]')?.getAttribute('content');
+        let meta_title = escapeHTML(htmlPage.querySelector('meta[property="og:title"]')?.getAttribute('content'));
+        let meta_url = escapeHTML(htmlPage.querySelector('meta[property="og:url"]')?.getAttribute('content'));
+        let meta_image = escapeHTML(htmlPage.querySelector('meta[property="og:image"]')?.getAttribute('content'));
+        let meta_descrip = escapeHTML(htmlPage.querySelector('meta[property="og:description"]')?.getAttribute('content'));
         
         // creative component
-        let meta_author = htmlPage.querySelector('meta[name="author"]')?.getAttribute('content');
+        let meta_author = escapeHTML(htmlPage.querySelector('meta[name="author"]')?.getAttribute('content'));
 
 
         if (meta_url == null) {
@@ -71,7 +79,7 @@ async function getURLPreview(url){
             <html>
             <body>
                 <div style="max-width: 300px; border: solid 1px; padding: 15px; text-align: center; background-color: #f0f0f0;"> 
-                    <a href=${meta_url}>
+                    <a href=${escapeHTML(meta_url)}>
                         ${metaTitleFunction(meta_title)}
                         ${metaAuthorFunction(meta_author)}
                         ${metaImageFunction(meta_image)}
@@ -81,9 +89,8 @@ async function getURLPreview(url){
             <body>
             </html>
         `
-        return(html1);
 
-        console.log(html1);
+        return(html1);
 
     } catch (error) {
         console.log(error);
