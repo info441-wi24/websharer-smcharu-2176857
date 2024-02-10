@@ -12,3 +12,14 @@
 
 3. **Additional Help:**
     - I did not get any additional help from other students
+
+## A3
+1. **URL of Deployed Render Site**
+   - https://websharer-4x6l.onrender.com/
+
+2. **Additional Piece of Information:**
+   - Takes in user name as well
+
+3. **Additional Help:**
+    - I did not get any additional help from other students
+
