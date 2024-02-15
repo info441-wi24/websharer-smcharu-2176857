@@ -20,9 +20,9 @@ const __dirname = dirname(__filename);
 const authConfig = {
     auth: {
         clientId: "1fed58c7-cc2f-4ad7-94fd-c5b9c3ac7c12",
-        authority: "f6b6dd5b-f02f-441a-99a0-162ac5060bd2",
-        clientSecret:  "087d5cc8-95e4-4128-9b27-94fcb3061815",
-        redirectUri: "https://websharer-smcharu.azurewebsites.net/redirect", //note: you can explicitly make this "localhost:3000/redirect" or "examplesite.me/redirect"
+        authority: "https://login.microsoftonline.com/f6b6dd5b-f02f-441a-99a0-162ac5060bd2",
+        clientSecret:  "yQv8Q~hco~Kn8M60mmasH.r_0YXotKqBHDWV-dxG",
+        redirectUri: "/redirect", //note: you can explicitly make this "localhost:3000/redirect" or "examplesite.me/redirect" "https://websharer-smcharu.azurewebsites.net/redirect"
     },
     system: {
         loggerOptions: {
