@@ -14,10 +14,20 @@ const postSchema = new mongoose.Schema({
     username: String,
     url: String,
     description: String,
-    created_date: String
-})
+    likes: { type: [String], default: [] },
+    created_date: { type: Date, default: Date.now }
+});
+
+const commentSchema = new mongoose.Schema({
+    username: String,
+    comment: String,
+    post: mongoose.Schema.Types.ObjectId, 
+    created_date: { type: Date, default: Date.now }
+});
 
 models.Post = mongoose.model('Post', postSchema);
+
+models.Comment = mongoose.model('Comment', commentSchema);
 
 console.log("mongoose models created")
 
