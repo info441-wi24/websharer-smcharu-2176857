@@ -63,31 +63,6 @@ router.post('/', async(req, res, next) => {
     }
 });
 
-// router.post('/like', async(req, res, next) => {
-//         try {
-//             if (req.session.isAuthenticated) {
-//                 const postID = req.body.postID;
-//                 const post = await req.models.Post.findById(postID);
-//                     if (!post.likes.includes(req.session.account.username)) {
-//                         post.likes.push(req.session.account.username);
-//                         await post.save();
-//                         return res.json({ status: "success"});
-//                     }
-//             } else {
-//                 res.status(401).json({
-//                     status: "error",
-//                     error: "not logged in"
-//                 })
-//             }
-//         } catch (error) {
-//             console.log(error);
-//             res.status(500).json({
-//                 status: "error",
-//                 error: error.message
-//             })
-//         }
-// })
-
 router.post('/like', async(req, res, next) => {
     if (req.session.isAuthenticated) {
         try {
