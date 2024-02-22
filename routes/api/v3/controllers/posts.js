@@ -26,7 +26,7 @@ router.get('/', async(req, res, next) => {
                     username: post.username, 
                     url: post.url, 
                     likes: post.likes, 
-                    created_date: req.body.created_date
+                    created_date: post.created_date
                 });
             } catch(error){
                 console.log("Error getting posts from db", error)
@@ -46,7 +46,7 @@ router.post('/', async(req, res, next) => {
                 username: req.session.account.username,
                 url: req.body.url,
                 description: req.body.description,
-                created_date: req.body.created_date
+                created_date: new Date()
             })
     
             await newPost.save()
@@ -62,6 +62,31 @@ router.post('/', async(req, res, next) => {
          })
     }
 });
+
+// router.post('/like', async(req, res, next) => {
+//         try {
+//             if (req.session.isAuthenticated) {
+//                 const postID = req.body.postID;
+//                 const post = await req.models.Post.findById(postID);
+//                     if (!post.likes.includes(req.session.account.username)) {
+//                         post.likes.push(req.session.account.username);
+//                         await post.save();
+//                         return res.json({ status: "success"});
+//                     }
+//             } else {
+//                 res.status(401).json({
+//                     status: "error",
+//                     error: "not logged in"
+//                 })
+//             }
+//         } catch (error) {
+//             console.log(error);
+//             res.status(500).json({
+//                 status: "error",
+//                 error: error.message
+//             })
+//         }
+// })
 
 router.post('/like', async(req, res, next) => {
     if (req.session.isAuthenticated) {
