@@ -26,7 +26,7 @@ router.get('/', async(req, res, next) => {
                     username: post.username, 
                     url: post.url, 
                     likes: post.likes, 
-                    date: post.created_date
+                    created_date: req.body.created_date
                 });
             } catch(error){
                 console.log("Error getting posts from db", error)
@@ -46,7 +46,7 @@ router.post('/', async(req, res, next) => {
                 username: req.session.account.username,
                 url: req.body.url,
                 description: req.body.description,
-                created_date: moment().toDate()
+                created_date: req.body.created_date
             })
     
             await newPost.save()
@@ -73,7 +73,6 @@ router.post('/like', async(req, res, next) => {
                 await post.save();
                 return res.json({ status: "success"});
             }
-
         } catch (error) {
             console.log(error);
             res.status(500).json({

@@ -18,14 +18,14 @@ const postSchema = new mongoose.Schema({
     created_date: { type: Date, default: Date.now }
 });
 
+models.Post = mongoose.model('Post', postSchema);
+
 const commentSchema = new mongoose.Schema({
     username: String,
     comment: String,
     post: mongoose.Schema.Types.ObjectId, 
     created_date: { type: Date, default: Date.now }
 });
-
-models.Post = mongoose.model('Post', postSchema);
 
 models.Comment = mongoose.model('Comment', commentSchema);
 

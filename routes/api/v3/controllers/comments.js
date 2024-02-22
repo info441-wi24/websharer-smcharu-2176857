@@ -26,7 +26,7 @@ router.post('/', async(req, res, next) => {
                 username: req.session.account.username,
                 comment: req.body.newComment,
                 post: req.body.postID,
-                created_date: moment().toDate()
+                created_date: req.body.created_date
             })
 
             await newComment.save();
