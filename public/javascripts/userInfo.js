@@ -4,14 +4,34 @@ async function init(){
 }
 
 async function saveUserInfo(){
-    //TODO: do an ajax call to save whatever info you want about the user from the user table
-    //see postComment() in the index.js file as an example of how to do this
-    
+    const urlParams = new URLSearchParams(window.location.search);
+    const user = urlParams.get('user');
+
+    let linkedIn = document.getElementById("linkedInInput").value;
+    if (!linkedIn) {
+        return;
+    }
+
+    try {
+        await fetchJSON(`api/${apiVersion}/usersInfo`, {
+            method: "POST",
+            body : {linkedIn: linkedIn, user : user}
+        });
+    } catch(error) {
+        console.error("Error saving user information:", error);
+    }
+
+    document.getElementById('linkedInInput').value = "";
+
+    loadUserInfo();
 }
+
+
 
 async function loadUserInfo(){
     const urlParams = new URLSearchParams(window.location.search);
     const username = urlParams.get('user');
+    console.log(username);
     if(username==myIdentity){
         document.getElementById("username-span").innerText= `You (${username})`;
         document.getElementById("user_info_new_div").classList.remove("d-none");
@@ -21,7 +41,15 @@ async function loadUserInfo(){
         document.getElementById("user_info_new_div").classList.add("d-none");
     }
     
-    //TODO: do an ajax call to load whatever info you want about the user from the user table
+    // TODO: do an ajax call to load whatever info you want about the user from the user table
+    let userInfo = await fetchJSON(`api/${apiVersion}/usersInfo?username=${username}`)
+    console.log(userInfo);
+    let userinfodiv = document.getElementById("user_info_div")
+
+    // let linkedInDiv = document.createElement('p')
+    // linkedInDiv.value = username[0].linkedIn
+    // userinfodiv.append(linkedInDiv)
+    userinfodiv.innerHTML = `<p>LinkedIn: ${userInfo[0].linkedIn}</p>`
 
     loadUserInfoPosts(username)
 }

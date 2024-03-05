@@ -24,7 +24,7 @@ const authConfig = {
         clientId: "1fed58c7-cc2f-4ad7-94fd-c5b9c3ac7c12",
         authority: "https://login.microsoftonline.com/f6b6dd5b-f02f-441a-99a0-162ac5060bd2",
         clientSecret:  "yQv8Q~hco~Kn8M60mmasH.r_0YXotKqBHDWV-dxG",
-        redirectUri: "/redirect"
+        redirectUri: "https://websharer-smcharu-2176857.azurewebsites.net/redirect" //note: you can explicitly make this "localhost:3000/redirect" or "examplesite.me/redirect" "https://websharer-smcharu.azurewebsites.net/redirect",
     },
     system: {
         loggerOptions: {
@@ -55,6 +55,15 @@ app.use(sessions({
 
 const authProvider = await WebAppAuthProvider.WebAppAuthProvider.initialize(authConfig);
 app.use(authProvider.authenticate());
+
+app.use((req, res, next) => {
+    if (req.authContext.isAuthenticated()) {
+        req.session.isAuthenticated = true;
+    } else {
+        req.session.isAuthenticated = false;
+    }
+    next();
+});
 
 app.use((req, res, next) => {
     req.models = models
