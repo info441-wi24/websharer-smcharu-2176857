@@ -29,6 +29,13 @@ const commentSchema = new mongoose.Schema({
 
 models.Comment = mongoose.model('Comment', commentSchema);
 
+const userInfoSchema = new mongoose.Schema({
+    linkedIn: String,
+    user: String
+})
+
+models.User = mongoose.model('User', userInfoSchema);
+
 console.log("mongoose models created")
 
 export default models;

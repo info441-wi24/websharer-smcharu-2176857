@@ -17,12 +17,14 @@ import WebAppAuthProvider from 'msal-node-wrapper'
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+//        redirectUri: "https://websharer-smcharu-2176857.azurewebsites.net/redirect" //note: you can explicitly make this "localhost:3000/redirect" or "examplesite.me/redirect" "https://websharer-smcharu.azurewebsites.net/redirect",
+
 const authConfig = {
     auth: {
         clientId: "1fed58c7-cc2f-4ad7-94fd-c5b9c3ac7c12",
         authority: "https://login.microsoftonline.com/f6b6dd5b-f02f-441a-99a0-162ac5060bd2",
         clientSecret:  "yQv8Q~hco~Kn8M60mmasH.r_0YXotKqBHDWV-dxG",
-        redirectUri: "https://websharer-smcharu.azurewebsites.net/redirect" //note: you can explicitly make this "localhost:3000/redirect" or "examplesite.me/redirect" "https://websharer-smcharu.azurewebsites.net/redirect",
+        redirectUri: "/redirect"
     },
     system: {
         loggerOptions: {
